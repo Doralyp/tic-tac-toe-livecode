@@ -4,4 +4,11 @@ class Board
   end
 
   
+
+  def to_s
+    # X | O | X
+    @board.map do |row|
+      row.map {|cell| cell.nil? ? " " : cell}.join(" | ")
+    end.join("\n#{'-' * 9}\n")
+  end
 end
