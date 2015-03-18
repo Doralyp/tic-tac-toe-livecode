@@ -7,10 +7,15 @@ until board.winner
     puts board
     valid_move = false
     until valid_move
-      puts "Player #{player} enter your move (row,col):"
+      puts "Player #{player} enter your move:"
       move = gets.chomp
-      row, col = move.split(',').map {|s| s.to_i}
-      valid_move = board.place(player, row, col)
+      unless move.match(/\d/)
+        puts "Enter a valid move"
+        next
+      end
+      position = move.to_i
+      valid_move = board.place(player, position)
+      puts "Invalid move" unless valid_move
     end
   end
 end
