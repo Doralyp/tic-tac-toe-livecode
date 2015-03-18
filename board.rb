@@ -13,8 +13,27 @@ class Board
     @board[row][col] = piece
   end
 
+  def stalement?
+    ! (@board.flatten.include? nil)
+  end
+
+  def find_row_winner(row)
+    return row[0] if row.uniq.size == 1
+  end
+
+  def rows_winner(board)
+    winning_player = nil
+    board.each do |row|
+      winning_player ||= find_row_winner(row)
+    end
+    winning_player
+  end
+
   def winner
-    nil
+    winning_player = nil
+    winning_plyaer ||= rows_winner(@board)
+    winning_player ||= rows_winner(@board.transpose)
+    return "tie" if stalement?
   end
 
   def to_s
