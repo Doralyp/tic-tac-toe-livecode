@@ -8,7 +8,8 @@ class Board
   def place(piece, position)
     # Check bounds and check for prior placement
     return false if position < 0 || position > BOARD_SIZE**2 - 1
-
+    row, col = position.divmod(BOARD_SIZE)
+    return false if @board[row][col]
     @board[row][col] = piece
   end
 
