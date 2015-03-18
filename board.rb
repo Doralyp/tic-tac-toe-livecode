@@ -5,9 +5,10 @@ class Board
     @board = Array.new(BOARD_SIZE) {Array.new(BOARD_SIZE, nil)}
   end
 
-  def place(piece, row, col)
+  def place(piece, position)
     # Check bounds and check for prior placement
-    return false if row > BOARD_SIZE - 1 || col > BOARD_SIZE - 1 || row < 0 || col < 0 || @board[row][col]
+    return false if position < 0 || position > BOARD_SIZE**2 - 1
+
     @board[row][col] = piece
   end
 
