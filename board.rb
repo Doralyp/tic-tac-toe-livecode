@@ -1,9 +1,13 @@
 class Board
+  BOARD_SIZE = 3
+
   def initialize
-    @board = Array.new(3) {Array.new(3, nil)}
+    @board = Array.new(BOARD_SIZE) {Array.new(BOARD_SIZE, nil)}
   end
 
   def place(piece, row, col)
+    # Check bounds and check for prior placement
+    return false if row > BOARD_SIZE - 1 || col > BOARD_SIZE - 1 || row < 0 || col < 0 || @board[row][col]
     @board[row][col] = piece
   end
 
