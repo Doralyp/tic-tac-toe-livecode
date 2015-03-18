@@ -22,8 +22,8 @@ class Board
     board_pos = -1
     @board.map do |row|
       row.map do |cell|
-        cell.nil? ? board_pos.to_s : cell
         board_pos += 1
+        cell.nil? ? board_pos.to_s : cell
       end.join(" | ")
     end.join("\n#{'-' * 9}\n")
   end
