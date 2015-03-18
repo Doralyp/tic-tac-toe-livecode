@@ -18,8 +18,12 @@ class Board
 
   def to_s
     # X | O | X
+    board_pos = -1
     @board.map do |row|
-      row.map {|cell| cell.nil? ? " " : cell}.join(" | ")
+      row.map do |cell|
+        cell.nil? ? board_pos.to_s : cell
+        board_pos += 1
+      end.join(" | ")
     end.join("\n#{'-' * 9}\n")
   end
 end
